@@ -1,0 +1,8 @@
+{
+    "require": {
+        "symfony/http-client": "^5.4"
+    },
+    "require-dev": {
+        "symfony/dotenv": "^5.4"
+    }
+}
