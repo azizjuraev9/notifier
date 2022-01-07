@@ -1,8 +1,14 @@
 {
     "require": {
-        "symfony/http-client": "^5.4"
+        "symfony/http-client": "^5.4",
+        "symfony/dependency-injection": "^5.4"
     },
     "require-dev": {
         "symfony/dotenv": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
     }
 }

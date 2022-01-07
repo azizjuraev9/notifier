@@ -12,8 +12,6 @@ namespace app\commands;
 interface CommandInterface
 {
 
-    public function init(array $config) : void;
-
     public function run(array $args = []) : bool;
 
 }

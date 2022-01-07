@@ -9,6 +9,8 @@
 namespace app\services;
 
 
+use Symfony\Component\HttpClient\HttpClient;
+
 class LatviaService implements FormCheckerServiceInterface
 {
 
@@ -20,9 +22,11 @@ class LatviaService implements FormCheckerServiceInterface
 
     private function fillForm()
     {
-        $response = $this->client->request(
+        $client = HttpClient::create();
+        $response = $client->request(
             'GET',
-            'https://api.github.com/repos/symfony/symfony-docs'
+            conf('latvia_url')
         );
+        dd($response->getContent());
     }
 }

@@ -9,27 +9,28 @@
 namespace app\commands;
 
 
+use Symfony\Component\DependencyInjection\Container;
+
 class Commander
 {
 
     private $commands;
-    private $config;
 
-    public function __construct($commands,$config)
+    public function __construct(array $commands)
     {
         $this->commands = $commands;
-        $this->config = $config;
     }
 
-    public function run($command) : bool
+    public function run(string $command) : bool
     {
         if(!isset($this->commands[$command]))
         {
-            exit(-1);
+            throw new \ErrorException('No command: '.$command);
         }
 
+
         $command = $this->commands[$command];
-        $command = new $command($this->config);
+        $command = new $command();
         return $command->run();
     }
 
