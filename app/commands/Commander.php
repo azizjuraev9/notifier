@@ -33,8 +33,8 @@ class Commander
         }
 
 //        dd($this->commands[$command]);
-        $command = service($this->commands[$command]);
-//        $command = $this->container->get($this->commands[$command]);
+//        $command = service($this->commands[$command]);
+        $command = $this->container->get($this->commands[$command]);
 //        $command = new $command();
         return $command->run();
     }
