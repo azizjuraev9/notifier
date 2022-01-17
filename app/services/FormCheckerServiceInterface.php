@@ -12,6 +12,6 @@ namespace app\services;
 interface FormCheckerServiceInterface
 {
 
-    public function IsOpen() : bool;
+    public function getDates() : array;
 
 }

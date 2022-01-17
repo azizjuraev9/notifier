@@ -18,15 +18,14 @@ class LatviaService implements FormCheckerServiceInterface
 
     private const STEP_1 = 'index';
     private const STEP_2 = 'step2';
-    private const CALENDAR = 'available-month-dates';
 
-    public function IsOpen(): bool
+    public function getDates(): array
     {
         $data = $this->fillForm();
-        return false;
+        return $data;
     }
 
-    private function fillForm() : void
+    private function fillForm() : array
     {
         $client = HttpClient::create();
         $response = $client->request(
@@ -37,8 +36,9 @@ class LatviaService implements FormCheckerServiceInterface
         $cookies = $response->getHeaders();
         $cookie = $this->prepareCookie($cookies['set-cookie']);
         $csrf = $this->step1($response->getContent(),$cookie);
-        $this->step2($response->getContent(),$cookie);
-        dd($this->getCalendar());
+
+        $this->step2($csrf,$cookie);
+        return $this->getCalendar($cookie);
     }
 
     private function prepareCookie(array $cookie) : string
@@ -114,14 +114,14 @@ class LatviaService implements FormCheckerServiceInterface
         $client = HttpClient::create();
         $response = $client->request(
             'GET',
-            Config::get('latvia_url') . self::CALENDAR . '?' . http_build_query([
+            Config::get('latvia_calendar_url'). '?' . http_build_query([
                 'year' => date('Y'),
                 'month' => date('m'),
-            ],[
+            ]),[
                 'headers' => [
                     'Cookie' => $cookie
                 ],
-            ])
+            ]
         );
         return json_decode($response->getContent());
     }

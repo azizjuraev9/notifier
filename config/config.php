@@ -10,6 +10,7 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 
 return [
     'latvia_url' => $_ENV['LATVIA_URL'],
+    'latvia_calendar_url' => $_ENV['LATVIA_CALENDAR_URL'],
     'latvia_visa_type' => 227, // Оформление латвийской национальной визы для граждан Узбекистана
 //    'latvia_visa_type' => 440, // Виза для грузоперевозчиков
 //    'latvia_visa_type' => 220, // Студенческая виза для граждан Республики Узбекистан

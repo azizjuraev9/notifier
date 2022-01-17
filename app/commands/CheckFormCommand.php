@@ -29,8 +29,8 @@ class CheckFormCommand implements CommandInterface
 
     public function run(array $args = []): bool
     {
-
-        if($this->formCheckerService->IsOpen())
+        $dates = $this->formCheckerService->getDates();
+        if(count($dates) > 0)
         {
             $this->notificationService->send(Config::get('to'),'');
         }
