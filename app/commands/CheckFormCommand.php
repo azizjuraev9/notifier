@@ -8,6 +8,7 @@
 
 namespace app\commands;
 
+use app\Config;
 use app\services\FormCheckerServiceInterface;
 use app\services\NotificationServiceInterface;
 
@@ -31,7 +32,7 @@ class CheckFormCommand implements CommandInterface
 
         if($this->formCheckerService->IsOpen())
         {
-            $this->notificationService->send(conf('to'),'');
+            $this->notificationService->send(Config::get('to'),'');
         }
         return true;
     }

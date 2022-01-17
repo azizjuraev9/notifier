@@ -12,6 +12,10 @@ require 'vendor/autoload.php';
 
 use app\commands\Commander;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\Dotenv\Dotenv;
+
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__.'/.env');
 
 $config = require "config/config.php";
 $commands = require "config/commands.php";
