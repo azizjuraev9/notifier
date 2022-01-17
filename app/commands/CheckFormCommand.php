@@ -32,7 +32,7 @@ class CheckFormCommand implements CommandInterface
         $dates = $this->formCheckerService->getDates();
         if(count($dates) > 0)
         {
-            $this->notificationService->send(Config::get('to'),'');
+            $this->notificationService->send(Config::get('tg_chat_id'),"Forma ochildi. Sanalar:\n" . implode(",\n",$dates));
         }
         return true;
     }

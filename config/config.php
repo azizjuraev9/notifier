@@ -9,6 +9,9 @@
 use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 
 return [
+    'tg_api_key' => $_ENV['TG_API_KEY'],
+    'tg_bot_username' => $_ENV['TG_BOT_USERNAME'],
+    'tg_chat_id' => $_ENV['TG_CHAT_ID'],
     'latvia_url' => $_ENV['LATVIA_URL'],
     'latvia_calendar_url' => $_ENV['LATVIA_CALENDAR_URL'],
     'latvia_visa_type' => 227, // Оформление латвийской национальной визы для граждан Узбекистана
