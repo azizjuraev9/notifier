@@ -28,6 +28,7 @@ class CheckFormCommand implements CommandInterface
 
     public function run(array $args = []): bool
     {
+
         if($this->formCheckerService->IsOpen())
         {
             $this->notificationService->send(conf('to'),'');

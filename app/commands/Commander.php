@@ -10,15 +10,19 @@ namespace app\commands;
 
 
 use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 class Commander
 {
 
-    private $commands;
+    private array $commands;
+    private ContainerBuilder $container;
 
-    public function __construct(array $commands)
+    public function __construct(array $commands, ContainerBuilder $container)
     {
         $this->commands = $commands;
+        $this->container = $container;
     }
 
     public function run(string $command) : bool
@@ -28,9 +32,10 @@ class Commander
             throw new \ErrorException('No command: '.$command);
         }
 
-
-        $command = $this->commands[$command];
-        $command = new $command();
+//        dd($this->commands[$command]);
+        $command = service($this->commands[$command]);
+//        $command = $this->container->get($this->commands[$command]);
+//        $command = new $command();
         return $command->run();
     }
 

@@ -29,7 +29,3 @@ function dd($data)
 {
     var_dump($data);die;
 }
-
-$container->register('notificationService',NotificationService::class);
-$container->register('formCheckerService',LatviaService::class);
-$container->register('formCheckerService',CheckFormCommand::class);
